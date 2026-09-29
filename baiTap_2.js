@@ -10,7 +10,7 @@
 // - unitPrice = basePrice + versionPrice.
 // - lineTotal = unitPrice * quantity.
 
-cart = [
+let cart = [
     {
         productId: "001",
         color: "Red",
@@ -21,14 +21,14 @@ cart = [
     },
 ];
 
-cartAdd = {
+let cartAdd = {
     productId: "001",
     color: "Red",
     version: "Normal",
     quantity: 2,
 };
 
-productInfo = {
+let productInfo = {
     stock: 500,
     basePrice: 4400000,
     versionPrice: 5000000,
