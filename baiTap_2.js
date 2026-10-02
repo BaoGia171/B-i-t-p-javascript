@@ -30,7 +30,8 @@ let cartAdd = {
 
 let productInfo = {
     stock: 500,
-    basePrice: 4400000,
+    // basePrice: 4400000,
+    basePrice: "anc",
     versionPrice: 5000000,
 };
 
@@ -47,6 +48,7 @@ function themVaoGio(cart, cartAdd, productInfo) {
                 trungNhau = i;
             }
         }
+
         let tongQuantity = 0;
         if (trungNhau !== -1) {
             //trùng nhau
@@ -59,8 +61,9 @@ function themVaoGio(cart, cartAdd, productInfo) {
             //vượt quá stock
             return cart;
         }
-        let unitPrice = productInfo.basePrice + productInfo.versionPrice;
-        let newCart = cart.slice(); // ko làm thay đổi mảng ban đầu -> tạo bản sao
+        if(typeof productInfo.stock === 'number' && !Number.isNaN(productInfo.stock) && typeof productInfo.basePrice === 'number' && !Number.isNaN(productInfo.basePrice) && typeof productInfo.versionPrice === 'number' && !Number.isNaN(productInfo.versionPrice)) {
+            let unitPrice = productInfo.basePrice + productInfo.versionPrice;
+            let newCart = cart.slice(); // ko làm thay đổi mảng ban đầu -> tạo bản sao
         if (trungNhau === -1) {
             newCart.push({
                 productId: cartAdd.productId,
@@ -82,10 +85,17 @@ function themVaoGio(cart, cartAdd, productInfo) {
     }
 }
 return newCart
-    } else {
+        }
+        else{
+            return cart
+        }
+        
+
+    } 
+    else {
         // ko thỏa điều kiện số lượng
         return cart;
     }
 }
-
+// cộng dồn
 console.log(themVaoGio(cart, cartAdd, productInfo));
